@@ -1,3 +1,5 @@
+package racing;
+
 public class RacingCar {
 
     public static final int MOVE_MIN_COUNT = 4;
