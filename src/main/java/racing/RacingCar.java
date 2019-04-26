@@ -3,11 +3,15 @@ package racing;
 public class RacingCar {
 
     public static final int MOVE_MIN_COUNT = 4;
-    int moveCount;
+    int position;
 
     public int move(int randomValue) {
-        if(randomValue >= MOVE_MIN_COUNT )
-           return moveCount+=1;
-        return moveCount;
+        if (isMoving(randomValue))
+            return position += 1;
+        return position;
+    }
+
+    private boolean isMoving(int randomValue) {
+        return randomValue >= MOVE_MIN_COUNT;
     }
 }
