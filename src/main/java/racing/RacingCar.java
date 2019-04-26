@@ -16,11 +16,10 @@ public class RacingCar {
 
     @Override
     public String toString() {
-        String str = "";
-
+        String steps = "";
         for (int i = 0; i < position; i++) {
-            str += "-";
+            steps += "-";
         }
-        return str;
+        return steps;
     }
 }
