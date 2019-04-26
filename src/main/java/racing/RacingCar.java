@@ -1,7 +1,6 @@
 package racing;
 
 public class RacingCar {
-
     public static final int MOVE_MIN_COUNT = 4;
     int position;
 
@@ -13,5 +12,15 @@ public class RacingCar {
 
     private boolean isMoving(int randomValue) {
         return randomValue >= MOVE_MIN_COUNT;
+    }
+
+    @Override
+    public String toString() {
+        String str = "";
+
+        for (int i = 0; i < position; i++) {
+            str += "-";
+        }
+        return str;
     }
 }
