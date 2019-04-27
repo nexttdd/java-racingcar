@@ -4,7 +4,6 @@ import java.util.Optional;
 import java.util.Random;
 
 public class RandomPower implements Power {
-
     private static final int BOUND = 10;
     private static final int GO = 1;
     private static final int STOP = 0;

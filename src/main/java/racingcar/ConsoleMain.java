@@ -6,7 +6,6 @@ import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class ConsoleMain {
-
     public static void main(String[] args) {
         Integer numberOfCars = InputView.inputNumberOfCars();
         Integer times = InputView.inputTimes();

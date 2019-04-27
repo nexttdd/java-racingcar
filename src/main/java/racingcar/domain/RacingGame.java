@@ -5,7 +5,6 @@ import racingcar.domain.power.Power;
 import racingcar.domain.rank.Rank;
 
 public class RacingGame {
-
     private Cars cars;
     private int time;
 
