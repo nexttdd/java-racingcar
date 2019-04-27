@@ -1,6 +1,6 @@
 package racingcar.domain.rank;
 
-import org.apache.commons.lang3.StringUtils;
+import org.junit.Before;
 import org.junit.Test;
 import racingcar.domain.car.Car;
 
@@ -11,34 +11,31 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RankTest {
 
+    private List<Car> cars;
+    private Rank rank;
+
+    @Before
+    public void setUp() throws Exception {
+        //given
+        cars = Arrays.asList(Car.generateWithPosition(1), Car.generateWithPosition(2));
+        rank = Rank.generate(cars);
+    }
+
     @Test
     public void rank생성() {
-        List<Car> cars = Arrays.asList(Car.generateWithPosition(1), Car.generateWithPosition(2));
-        Rank rank = Rank.generate(cars);
+        //then
         assertThat(rank).isNotNull();
     }
 
     @Test
     public void 최종결과_확인() {
-        List<Car> cars = Arrays.asList(Car.generateWithPosition(1), Car.generateWithPosition(2));
-        Rank rank = Rank.generate(cars);
+        //when
+        List<Integer> result = rank.result();
 
+        //then
         int idx = 0;
-        for (Integer position : rank.result()) {
+        for (Integer position : result) {
             assertThat(position).isEqualTo(++idx);
-        }
-    }
-
-    @Test
-    public void 결과출력() {
-        List<Car> cars = Arrays.asList(Car.generateWithPosition(1), Car.generateWithPosition(2));
-        Rank rank = Rank.generate(cars);
-
-        for (int time = 1; time <= 3; time++) {
-            for (int position : rank.result()) {
-                System.out.println(StringUtils.repeat("-", time > position ? position : time));
-            }
-            System.out.println();
         }
     }
 }
