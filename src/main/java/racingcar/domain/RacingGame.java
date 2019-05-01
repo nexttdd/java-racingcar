@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import racingcar.domain.car.CarNames;
 import racingcar.domain.car.Cars;
 import racingcar.domain.power.Power;
 import racingcar.domain.rank.Rank;
@@ -13,8 +14,8 @@ public class RacingGame {
         this.time = time;
     }
 
-    public static RacingGame generate(int numberOfCars, int time, Power power) {
-        Cars cars = Cars.generate(numberOfCars, power);
+    public static RacingGame generate(CarNames carNames, int time, Power power) {
+        Cars cars = Cars.newInstance(carNames, power);
         return new RacingGame(cars, time);
     }
 

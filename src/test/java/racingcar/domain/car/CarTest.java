@@ -6,30 +6,22 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
     @Test
-    public void Car생성확인() {
+    public void Car객체생성() {
         //given
-        String name = "hoho";
-        Car car = Car.generate(name);
-
-        //then
-        assertThat(car).isNotNull();
-        assertThat(car.getCarName()).isEqualTo(name);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void Car생성실패() {
-        //given
-        String name = "";
-
+        String name = "pobi";
+        CarName carName = new CarName(name);
         //when
-        Car car = Car.generate(name);
+        Car car = Car.newInstance(carName);
+        //then
+        assertThat(car.getCarName()).isEqualTo(name);
     }
 
     @Test
     public void 이동() {
         //given
         String name = "koko";
-        Car car = Car.generateWithPosition(name, 2);
+        CarName carName = new CarName(name);
+        Car car = Car.newInstanceWithPosition(carName, 2);
 
         //when
         car.move(1);

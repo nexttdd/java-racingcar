@@ -15,11 +15,10 @@ public class Cars {
         this.power = power;
     }
 
-    public static Cars generate(int numberOfCars, Power power) {
+    public static Cars newInstance(CarNames carNames, Power power) {
         List<Car> cars = new ArrayList<>();
-
-        for (int i = 0; i < numberOfCars; i++) {
-            cars.add(Car.generate());
+        for (CarName carName : carNames.getCarNames()) {
+            cars.add(Car.newInstance(carName));
         }
 
         return new Cars(cars, power);
