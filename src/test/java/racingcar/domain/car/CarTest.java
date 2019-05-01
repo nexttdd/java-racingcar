@@ -8,16 +8,28 @@ public class CarTest {
     @Test
     public void Car생성확인() {
         //given
-        Car car = Car.generate();
+        String name = "hoho";
+        Car car = Car.generate(name);
 
         //then
         assertThat(car).isNotNull();
+        assertThat(car.getCarName()).isEqualTo(name);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void Car생성실패() {
+        //given
+        String name = "";
+
+        //when
+        Car car = Car.generate(name);
     }
 
     @Test
     public void 이동() {
         //given
-        Car car = Car.generateWithPosition(2);
+        String name = "koko";
+        Car car = Car.generateWithPosition(name, 2);
 
         //when
         car.move(1);
