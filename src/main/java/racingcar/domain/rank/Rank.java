@@ -2,26 +2,47 @@ package racingcar.domain.rank;
 
 import racingcar.domain.car.Car;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Rank {
-    private List<Integer> positions;
+    private Map<String, Integer> result;
 
-    private Rank(List<Integer> positions) {
-        this.positions = positions;
+    public Rank(Map<String, Integer> result) {
+        this.result = result;
     }
 
     public static Rank generate(List<Car> cars) {
-        List<Integer> positions = new ArrayList<>();
+        Map<String, Integer> result = new HashMap<>();
         for (Car car : cars) {
-            positions.add(car.getPosition());
+            result.put(car.getCarName(), car.getPosition());
         }
-        return new Rank(positions);
+        return new Rank(result);
     }
 
-    public List<Integer> result() {
-        return Collections.unmodifiableList(positions);
+    public Map<String, Integer> result() {
+        return Collections.unmodifiableMap(result);
+    }
+
+    public List<String> findWinner() {
+        int maxPosition = findMaxPosition();
+        List<String> winner = new ArrayList<>();
+
+        result.forEach((carName, position) -> {
+            if (maxPosition == position) {
+                winner.add(carName);
+            }
+        });
+
+        return winner;
+    }
+
+    private int findMaxPosition() {
+        int maxPosition = -1;
+
+        for (Integer position : result.values()) {
+            maxPosition = position > maxPosition ? position : maxPosition;
+        }
+
+        return maxPosition;
     }
 }
