@@ -4,6 +4,7 @@ import racingcar.domain.car.CarNames;
 import racingcar.domain.car.Cars;
 import racingcar.domain.power.Power;
 import racingcar.domain.rank.Rank;
+import racingcar.domain.rank.Ranks;
 
 public class RacingGame {
     private Cars cars;
@@ -19,7 +20,13 @@ public class RacingGame {
         return new RacingGame(cars, time);
     }
 
-    public Rank go() {
-        return Rank.generate(cars.move(time));
+    public Ranks go() {
+        Ranks ranks = new Ranks();
+
+        for (int i = 0; i < time; i++) {
+            ranks.add(cars.move2());
+        }
+
+        return ranks;
     }
 }

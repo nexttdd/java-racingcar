@@ -11,7 +11,9 @@ public class ConsoleMain {
         String names = InputView.inputRacingCars();
         Integer times = InputView.inputTimes();
 
-        RacingGame racingGame = RacingGame.generate(CarNames.newInstance(names), times, new RandomPower());
-        OutputView.result(times, racingGame.go());
+        CarNames carNames = CarNames.newInstance(names);
+
+        RacingGame racingGame = RacingGame.generate(carNames, times, new RandomPower());
+        OutputView.result(carNames, times, racingGame.go());
     }
 }

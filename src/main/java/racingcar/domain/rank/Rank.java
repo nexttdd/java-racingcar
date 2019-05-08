@@ -33,7 +33,7 @@ public class Rank {
             }
         });
 
-        return winner;
+        return Collections.unmodifiableList(winner);
     }
 
     private int findMaxPosition() {

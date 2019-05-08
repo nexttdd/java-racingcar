@@ -14,7 +14,7 @@ public class CarNames {
     public static CarNames newInstance(String inputNames) {
         String[] names = inputNames.split(",");
         List<CarName> carNames = new ArrayList<>();
-        for(String name : names) {
+        for (String name : names) {
             carNames.add(new CarName(name));
         }
         return new CarNames(carNames);

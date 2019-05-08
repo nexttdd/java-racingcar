@@ -2,7 +2,7 @@ package racingcar.domain;
 
 import org.junit.Test;
 import racingcar.domain.car.CarNames;
-import racingcar.domain.rank.Rank;
+import racingcar.domain.rank.Ranks;
 import racingcar.testmodule.ManualPower;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -16,11 +16,9 @@ public class RacingGameTest {
         RacingGame racingGame = RacingGame.generate(carNames, time, new ManualPower());
 
         //when
-        Rank rank = racingGame.go();
+        Ranks ranks = racingGame.go();
 
         //then
-        for (int position : rank.result().values()) {
-            assertThat(position).isEqualTo(1);
-        }
+        assertThat(ranks.findWinners().size()).isEqualTo(3);
     }
 }
