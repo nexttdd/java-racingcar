@@ -13,7 +13,7 @@ public class CarTest {
         //when
         Car car = Car.newInstance(carName);
         //then
-        assertThat(car.getCarName()).isEqualTo(name);
+        assertThat(car.toString()).isEqualTo(name);
     }
 
     @Test

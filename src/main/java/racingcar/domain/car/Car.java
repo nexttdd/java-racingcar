@@ -23,11 +23,12 @@ public class Car {
         this.position += distance;
     }
 
-    public String getCarName() {
-        return this.carName.toString();
-    }
-
     public int getPosition() {
         return position;
+    }
+
+    @Override
+    public String toString() {
+        return this.carName.toString();
     }
 }
