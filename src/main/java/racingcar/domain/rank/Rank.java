@@ -14,7 +14,7 @@ public class Rank {
     public static Rank generate(List<Car> cars) {
         Map<String, Integer> result = new HashMap<>();
         for (Car car : cars) {
-            result.put(car.getCarName(), car.getPosition());
+            result.put(car.toString(), car.getPosition());
         }
         return new Rank(result);
     }
