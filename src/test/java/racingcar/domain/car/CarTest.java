@@ -10,8 +10,10 @@ public class CarTest {
         //given
         String name = "pobi";
         CarName carName = new CarName(name);
+
         //when
         Car car = Car.newInstance(carName);
+
         //then
         assertThat(car.toString()).isEqualTo(name);
     }

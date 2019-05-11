@@ -13,8 +13,9 @@ public class OutputView {
     private static final String PROGRESS_BAR = "-";
 
     public static void result(CarNames carNames, Integer times, Ranks ranks) {
-        List<Rank> results = ranks.getResults();
+        System.out.println("실행 결과");
 
+        List<Rank> results = ranks.getResults();
         for (int step = 0; step < times; step++) {
             printStep(carNames, step, results.get(step));
         }

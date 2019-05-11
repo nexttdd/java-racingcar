@@ -11,7 +11,6 @@ public class Ranks {
         this.ranks = new ArrayList<>();
     }
 
-
     public void add(Rank rank) {
         this.ranks.add(rank);
     }
