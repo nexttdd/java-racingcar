@@ -15,6 +15,10 @@ public class CarName {
                 .orElseThrow(IllegalArgumentException::new);
     }
 
+    public String getName() {
+        return name;
+    }
+
     @Override
     public String toString() {
         return name;
