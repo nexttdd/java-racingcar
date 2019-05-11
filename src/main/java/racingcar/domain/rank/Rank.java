@@ -23,7 +23,7 @@ public class Rank {
         return Collections.unmodifiableMap(result);
     }
 
-    public List<String> findWinner() {
+    public List<String> findWinners() {
         int maxPosition = findMaxPosition();
         List<String> winner = new ArrayList<>();
 

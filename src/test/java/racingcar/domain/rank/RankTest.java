@@ -31,7 +31,7 @@ public class RankTest {
     @Test
     public void 우승자_확인() {
         //when
-        List<String> winner = rank.findWinner();
-        assertThat(winner.get(0)).isEqualTo("cong");
+        List<String> winnersName = rank.findWinners();
+        assertThat(winnersName.get(0)).isEqualTo("cong");
     }
 }

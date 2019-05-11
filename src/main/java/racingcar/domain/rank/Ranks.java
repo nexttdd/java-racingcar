@@ -21,6 +21,6 @@ public class Ranks {
 
     public List<String> findWinners() {
         int lastStep = ranks.size() - 1;
-        return ranks.get(lastStep).findWinner();
+        return ranks.get(lastStep).findWinners();
     }
 }
