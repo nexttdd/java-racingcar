@@ -1,6 +1,7 @@
 package racingcar.domain.car;
 
 import racingcar.domain.power.Power;
+import racingcar.domain.rank.Rank;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,25 +16,21 @@ public class Cars {
         this.power = power;
     }
 
-    public static Cars generate(int numberOfCars, Power power) {
+    public static Cars newInstance(CarNames carNames, Power power) {
         List<Car> cars = new ArrayList<>();
-
-        for (int i = 0; i < numberOfCars; i++) {
-            cars.add(Car.generate());
+        for (CarName carName : carNames.getCarNames()) {
+            cars.add(Car.newInstance(carName));
         }
 
         return new Cars(cars, power);
     }
 
-    public List<Car> move(int time) {
-         for (int i = 0; i < time; i++) {
-             cars.forEach(car -> car.move(power.move()));
-         }
-
-        return Collections.unmodifiableList(cars);
-    }
-
     public int size() {
         return this.cars.size();
+    }
+
+    public Rank move() {
+        cars.forEach(car -> car.move(power.move()));
+        return Rank.generate(cars);
     }
 }
