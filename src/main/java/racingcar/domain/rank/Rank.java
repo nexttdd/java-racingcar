@@ -5,6 +5,8 @@ import racingcar.domain.car.Car;
 import java.util.*;
 
 public class Rank {
+    //TODO : 단계별 Cars를 저장하는 방식으로 개선,  poistion, maxPosition을 Car객체에 던져서 확인하는 방식 개선해보기
+
     private Map<String, Integer> result;
 
     public Rank(Map<String, Integer> result) {

@@ -3,7 +3,6 @@ package racingcar.domain;
 import racingcar.domain.car.CarNames;
 import racingcar.domain.car.Cars;
 import racingcar.domain.power.Power;
-import racingcar.domain.rank.Rank;
 import racingcar.domain.rank.Ranks;
 
 public class RacingGame {
@@ -24,7 +23,7 @@ public class RacingGame {
         Ranks ranks = new Ranks();
 
         for (int i = 0; i < time; i++) {
-            ranks.add(cars.move2());
+            ranks.add(cars.move());
         }
 
         return ranks;

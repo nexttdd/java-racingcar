@@ -25,19 +25,11 @@ public class Cars {
         return new Cars(cars, power);
     }
 
-    public List<Car> move(int time) {
-        for (int i = 0; i < time; i++) {
-            cars.forEach(car -> car.move(power.move()));
-        }
-
-        return Collections.unmodifiableList(cars);
-    }
-
     public int size() {
         return this.cars.size();
     }
 
-    public Rank move2() {
+    public Rank move() {
         cars.forEach(car -> car.move(power.move()));
         return Rank.generate(cars);
     }

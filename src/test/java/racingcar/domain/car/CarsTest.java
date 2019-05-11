@@ -2,9 +2,8 @@ package racingcar.domain.car;
 
 import org.junit.Before;
 import org.junit.Test;
+import racingcar.domain.rank.Rank;
 import racingcar.testmodule.ManualPower;
-
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -28,11 +27,10 @@ public class CarsTest {
     @Test
     public void n대_모두이동() {
         //when
-        List<Car> positions = cars.move(4);
+        Rank positions = cars.move();
 
         //then
-        for (Car car : positions) {
-            assertThat(car.getPosition()).isEqualTo(4);
-        }
+        assertThat(positions).isNotNull();
+        positions.result().forEach((carName, carPosition) -> assertThat(carPosition).isEqualTo(1));
     }
 }
