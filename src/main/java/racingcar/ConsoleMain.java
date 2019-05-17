@@ -14,6 +14,6 @@ public class ConsoleMain {
         CarNames carNames = CarNames.newInstance(names);
 
         RacingGame racingGame = RacingGame.generate(carNames, times, new RandomPower());
-        OutputView.result(carNames, times, racingGame.go());
+        OutputView.printWinner(racingGame.go());
     }
 }

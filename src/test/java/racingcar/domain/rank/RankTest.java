@@ -2,24 +2,25 @@ package racingcar.domain.rank;
 
 import org.junit.Before;
 import org.junit.Test;
-import racingcar.domain.car.Car;
-import racingcar.domain.car.CarName;
+import racingcar.domain.car.CarNames;
+import racingcar.domain.car.Cars;
+import racingcar.testmodule.ManualPower;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RankTest {
 
-    private List<Car> cars;
+    private Cars cars;
     private Rank rank;
 
     @Before
     public void setUp() throws Exception {
         //given
-        cars = Arrays.asList(Car.newInstanceWithPosition(new CarName("pobi"), 2), Car.newInstanceWithPosition(new CarName("cong"), 3));
-        rank = Rank.generate(cars);
+        CarNames carNames = CarNames.newInstance("po,cu,jo");
+        Cars cars = Cars.newInstance(carNames, new ManualPower());
+        rank = new Rank(cars);
     }
 
     @Test
@@ -31,7 +32,7 @@ public class RankTest {
     @Test
     public void 우승자_확인() {
         //when
-        List<String> winnersName = rank.findWinners();
-        assertThat(winnersName.get(0)).isEqualTo("cong");
+        List<String> winnersName = rank.findWinner();
+        assertThat(winnersName.get(0)).isEqualTo("po");
     }
 }

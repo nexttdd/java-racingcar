@@ -1,7 +1,6 @@
 package racingcar.domain.car;
 
 import racingcar.domain.power.Power;
-import racingcar.domain.rank.Rank;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -29,8 +28,31 @@ public class Cars {
         return this.cars.size();
     }
 
-    public Rank move() {
+    public Cars move() {
         cars.forEach(car -> car.move(power.move()));
-        return Rank.generate(cars);
+        return this;
+    }
+
+    public List<String> findWinner() {
+        int maxPosition = findMaxPosition();
+        List<String> winner = new ArrayList<>();
+
+        for (Car car : cars) {
+            car.isWinner(maxPosition, winner);
+        }
+
+        return winner;
+    }
+
+    private int findMaxPosition() {
+        int maxPosition = -1;
+        for (Car car : cars) {
+            maxPosition = car.isMaxPosition(maxPosition);
+        }
+        return maxPosition;
+    }
+
+    public List<Car> getCars() {
+        return Collections.unmodifiableList(cars);
     }
 }
