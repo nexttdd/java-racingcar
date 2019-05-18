@@ -20,6 +20,15 @@ public class CarNames {
         return new CarNames(carNames);
     }
 
+    public static CarNames newInstance(String inputNames, String delimeter) {
+        String[] names = inputNames.split(delimeter);
+        List<CarName> carNames = new ArrayList<>();
+        for (String name : names) {
+            carNames.add(new CarName(name));
+        }
+        return new CarNames(carNames);
+    }
+
     public List<CarName> getCarNames() {
         return Collections.unmodifiableList(carNames);
     }

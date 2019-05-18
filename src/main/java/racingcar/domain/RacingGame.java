@@ -3,7 +3,8 @@ package racingcar.domain;
 import racingcar.domain.car.CarNames;
 import racingcar.domain.car.Cars;
 import racingcar.domain.power.Power;
-import racingcar.domain.rank.Ranks;
+import racingcar.domain.rank.Rank;
+import racingcar.view.OutputView;
 
 public class RacingGame {
     private Cars cars;
@@ -19,13 +20,11 @@ public class RacingGame {
         return new RacingGame(cars, time);
     }
 
-    public Ranks go() {
-        Ranks ranks = new Ranks();
-
+    public Rank go() {
         for (int i = 0; i < time; i++) {
-            ranks.add(cars.move());
+            cars.move();
+            OutputView.printStatus(cars);
         }
-
-        return ranks;
+        return new Rank(cars);
     }
 }

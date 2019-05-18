@@ -49,3 +49,33 @@ ex> pobi,crong,honux
 >> maxPosition 찾는것도 필요
 
 >> Rank의 구조를 HashMap으로 변경해야할 거 같다
+
+-------------------------------------------------------------
+
+step3
+
+webMain 만들기
+ - index, game, result에 대한 컨트롤러 만들기
+
+/index
+ - 이름 입력받기
+
+/name
+ #로직
+ - 전달받은 이름 (String) > List형태로 분리, 저장
+ - /game으로 이름 전달
+
+
+/game
+ #UI
+ . 입력받은 이름 출력
+ - 횟수 입력받기
+
+result
+ #로직
+ - 이름, 횟수로 racingGame 진행
+ - 결과 UI로 전달
+
+ #UI
+ - 이름 + position출력
+ - 우승자 출력

@@ -1,5 +1,7 @@
 package racingcar.domain.car;
 
+import java.util.List;
+
 public class Car {
     private static final int DEFAULT_POSITION = 0;
 
@@ -22,6 +24,18 @@ public class Car {
     public void move(int distance) {
         this.position += distance;
     }
+
+    public int isMaxPosition(int maxPosition) {
+        return maxPosition < position ? position : maxPosition;
+    }
+
+    public void isWinner(int maxPosition, List<String> winner) {
+        if (maxPosition == position) {
+            winner.add(carName.getName());
+        }
+    }
+
+    public String getCarName() { return carName.getName(); }
 
     public int getPosition() {
         return position;
