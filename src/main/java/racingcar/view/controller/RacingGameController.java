@@ -1,12 +1,16 @@
 package racingcar.view.controller;
 
+import org.apache.commons.lang3.StringUtils;
 import racingcar.domain.RacingGame;
+import racingcar.domain.car.Car;
 import racingcar.domain.car.CarNames;
+import racingcar.domain.car.Cars;
 import racingcar.domain.power.RandomPower;
 import racingcar.domain.rank.Rank;
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,7 +55,7 @@ public class RacingGameController {
             RacingGame racingGame = RacingGame.generate(carNames, turn, new RandomPower());
             Rank rank = racingGame.go();
             Map<String, Object> model = new HashMap<>();
-            model.put("result", rank.checkReulst().getCars());
+            model.put("result", printProgress(rank.checkReulst()));
             model.put("winner", printWinners(rank.findWinner()));
             return render(model, "result.html");
         });
@@ -63,5 +67,13 @@ public class RacingGameController {
 
     private String printWinners(List<String> winner) {
         return String.join(", ", winner) + "가 최종 우승했습니다.";
+    }
+
+    private List<String> printProgress(Cars cars) {
+        List<String> result = new ArrayList<>();
+        for (Car car : cars.getCars()) {
+            result.add(car.getCarName() + " : " + StringUtils.repeat("\u00a0\u00a0\u00a0", car.getPosition()-1));
+        }
+        return result;
     }
 }
